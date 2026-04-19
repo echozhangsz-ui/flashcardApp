@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+  <!-- bond_new: shy face, color #7c8ca3 -->
+  <circle cx="48" cy="48" r="44" fill="#f4f7fb" stroke="#7c8ca3" stroke-width="3"/>
+  <!-- eyes -->
+  <rect x="30" y="36" width="8" height="14" rx="4" fill="#7c8ca3"/>
+  <rect x="58" y="36" width="8" height="14" rx="4" fill="#7c8ca3"/>
+  <!-- blush -->
+  <ellipse cx="24" cy="58" rx="7" ry="3" fill="#7c8ca3" opacity="0.35" transform="rotate(-18 24 58)"/>
+  <ellipse cx="72" cy="58" rx="7" ry="3" fill="#7c8ca3" opacity="0.35" transform="rotate(18 72 58)"/>
+  <!-- shy mouth (flat/slight curve) -->
+  <path d="M36 68 Q48 65 60 68" stroke="#7c8ca3" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>

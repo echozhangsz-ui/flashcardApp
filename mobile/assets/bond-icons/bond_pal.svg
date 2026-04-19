@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+  <!-- bond_pal: smile face, color #4A90D9 -->
+  <circle cx="48" cy="48" r="44" fill="#edf6ff" stroke="#4A90D9" stroke-width="3"/>
+  <!-- eyes -->
+  <rect x="30" y="36" width="8" height="14" rx="4" fill="#4A90D9"/>
+  <rect x="58" y="36" width="8" height="14" rx="4" fill="#4A90D9"/>
+  <!-- smile mouth -->
+  <path d="M32 62 Q48 76 64 62" stroke="#4A90D9" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>

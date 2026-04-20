@@ -14,6 +14,11 @@ module.exports = {
   ...appJson,
   expo: {
     ...appJson.expo,
-    extra: { apiBase },
+    extra: {
+      apiBase,
+      eas: {
+        projectId: "3c55ddf6-9b45-45f7-a2bf-7272e6f534bd",
+      },
+    },
   },
 };

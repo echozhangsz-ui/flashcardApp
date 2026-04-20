@@ -127,7 +127,7 @@ def _open_ngrok_tunnel():
 
 threading.Thread(target=_open_ngrok_tunnel, daemon=True).start()
 
-app = FastAPI(title="Flashcard API")
+app = FastAPI(title="Cardbud API")
 
 app.add_middleware(
     CORSMiddleware,
@@ -144,7 +144,7 @@ PRIVACY_POLICY_HTML = """
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Tutor Privacy Policy</title>
+  <title>Cardbud Privacy Policy</title>
   <style>
     body {
       margin: 0;
@@ -192,18 +192,18 @@ PRIVACY_POLICY_HTML = """
 </head>
 <body>
   <main>
-    <h1>AI Tutor Privacy Policy</h1>
+    <h1>Cardbud Privacy Policy</h1>
     <p class="updated">Last updated: April 20, 2026</p>
 
     <section>
       <h2>Overview</h2>
       <p>
-        This Privacy Policy explains how AI Tutor ("the App", "we", "us", or "our")
+        This Privacy Policy explains how Cardbud ("the App", "we", "us", or "our")
         accesses, collects, uses, shares, protects, retains, and deletes information
         when you use the App on Android or iOS.
       </p>
       <p>
-        AI Tutor helps users create flashcards, study language material, ask an AI tutor
+        Cardbud helps users create flashcards, study language material, ask an AI tutor
         questions, import notes, process PDFs, recognize text from images, and transcribe
         audio.
       </p>
@@ -311,10 +311,10 @@ PRIVACY_POLICY_HTML = """
 
     <section>
       <h2>Contact</h2>
-      <p>Developer: AI Tutor / flashcardApp</p>
+      <p>App: Cardbud</p>
       <p>
         For privacy questions, data access, or deletion requests, please contact us through
-        the support email listed in the App Store or Google Play listing for AI Tutor.
+        the support email listed in the App Store or Google Play listing for Cardbud.
       </p>
     </section>
   </main>
@@ -548,7 +548,7 @@ User-selected AI Decide settings:
 @app.get("/", include_in_schema=False)
 def root():
     return {
-        "name": "AI Tutor API",
+        "name": "Cardbud API",
         "status": "ok",
         "docs": "/docs",
         "privacy_policy": "/privacy",

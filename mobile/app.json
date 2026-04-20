@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mobile",
-    "slug": "mobile",
+    "name": "Cardbud",
+    "slug": "cardbud",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,18 +13,19 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "bundleIdentifier": "com.echo.flashcardapp",
+      "bundleIdentifier": "com.xirong.cardbud",
       "supportsTablet": true,
       "infoPlist": {
-        "NSCameraUsageDescription": "Use the camera to capture text for AI Tutor.",
-        "NSPhotoLibraryUsageDescription": "Allow access to photos so you can import text images into AI Tutor.",
-        "NSMicrophoneUsageDescription": "Use the microphone to record lectures and create flashcards.",
+        "NSCameraUsageDescription": "Use the camera to capture text for Cardbud.",
+        "NSPhotoLibraryUsageDescription": "Allow access to photos so you can import text images into Cardbud.",
+        "NSMicrophoneUsageDescription": "Use the microphone to record lectures and create flashcards in Cardbud.",
         "NSAppTransportSecurity": {
           "NSAllowsArbitraryLoads": true
         }
       }
     },
     "android": {
+      "package": "com.xirong.cardbud",
       "permissions": [
         "CAMERA",
         "RECORD_AUDIO",

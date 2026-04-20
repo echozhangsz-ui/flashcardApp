@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import List, Optional
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from openai import OpenAI
 from dotenv import load_dotenv
@@ -136,6 +137,190 @@ app.add_middleware(
 )
 
 openai_client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", ""))
+
+PRIVACY_POLICY_HTML = """
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Tutor Privacy Policy</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f1f7f2;
+      color: #1f2937;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 20px 64px;
+    }
+    h1, h2 {
+      color: #355343;
+      line-height: 1.25;
+    }
+    h1 {
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: 22px;
+      margin-top: 34px;
+    }
+    .updated {
+      color: #637083;
+      font-weight: 600;
+      margin-bottom: 28px;
+    }
+    a {
+      color: #2f855a;
+    }
+    section {
+      background: #ffffff;
+      border: 1px solid #d8e2dc;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 18px 0;
+    }
+    ul {
+      padding-left: 22px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>AI Tutor Privacy Policy</h1>
+    <p class="updated">Last updated: April 20, 2026</p>
+
+    <section>
+      <h2>Overview</h2>
+      <p>
+        This Privacy Policy explains how AI Tutor ("the App", "we", "us", or "our")
+        accesses, collects, uses, shares, protects, retains, and deletes information
+        when you use the App on Android or iOS.
+      </p>
+      <p>
+        AI Tutor helps users create flashcards, study language material, ask an AI tutor
+        questions, import notes, process PDFs, recognize text from images, and transcribe
+        audio.
+      </p>
+    </section>
+
+    <section>
+      <h2>Information We Collect or Process</h2>
+      <p>Depending on which features you use, the App may collect or process:</p>
+      <ul>
+        <li>Account information, such as email address, display name, and password credentials.</li>
+        <li>Learning content, such as flashcards, deck names, notes, chat prompts, and AI responses.</li>
+        <li>Uploaded files or media, such as PDFs, images, and audio recordings that you choose to import.</li>
+        <li>Image text and audio transcription results generated from files you provide.</li>
+        <li>Technical data, such as server logs, request metadata, device/network information, and error information needed to operate and secure the service.</li>
+      </ul>
+      <p>
+        The App requests access to the camera, photo library, microphone, and files only
+        when needed for features you choose to use.
+      </p>
+    </section>
+
+    <section>
+      <h2>How We Use Information</h2>
+      <p>We use information to:</p>
+      <ul>
+        <li>Provide AI tutoring, flashcard generation, text recognition, PDF parsing, and audio transcription features.</li>
+        <li>Create and manage your local or service-backed study content.</li>
+        <li>Authenticate accounts and protect access to user data.</li>
+        <li>Maintain, debug, secure, and improve the App and backend service.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Sharing and Third-Party Service Providers</h2>
+      <p>
+        We do not sell personal information. We may share or process information with
+        service providers only as needed to operate the App, including:
+      </p>
+      <ul>
+        <li>OpenAI, for AI responses, text recognition, flashcard generation, and transcription features.</li>
+        <li>Render, for hosting the backend API.</li>
+        <li>Apple, Google, or Expo services as required for app distribution, device features, and platform operation.</li>
+      </ul>
+      <p>
+        Content you send to AI-powered features may be transmitted to OpenAI to generate
+        responses or outputs. Please avoid submitting information you do not want processed
+        by these services.
+      </p>
+    </section>
+
+    <section>
+      <h2>Data Security</h2>
+      <p>
+        We use HTTPS for communication with the backend service. Passwords are stored using
+        salted password hashing. We limit access to operational secrets, such as API keys,
+        through server-side environment variables.
+      </p>
+      <p>
+        No method of transmission or storage is perfectly secure, but we take reasonable
+        steps to protect the information processed by the App.
+      </p>
+    </section>
+
+    <section>
+      <h2>Data Retention and Deletion</h2>
+      <p>
+        We retain account and study data for as long as needed to provide the App's features,
+        comply with legal obligations, resolve disputes, and maintain security. Temporary
+        uploaded files may be processed only for the requested feature and then discarded.
+      </p>
+      <p>
+        You may request deletion of your account or data by using the contact method listed
+        below or the support contact listed in the App Store or Google Play listing. We will
+        process deletion requests within a reasonable period, unless retention is required
+        for legal, security, or fraud-prevention reasons.
+      </p>
+    </section>
+
+    <section>
+      <h2>Children's Privacy</h2>
+      <p>
+        The App is not intended for children under 13. If you believe a child has provided
+        personal information through the App, please contact us so we can take appropriate
+        action.
+      </p>
+    </section>
+
+    <section>
+      <h2>Your Choices</h2>
+      <p>
+        You can choose not to use features that require camera, photo library, microphone,
+        or file access. You can also manage device permissions in your operating system
+        settings.
+      </p>
+    </section>
+
+    <section>
+      <h2>Changes to This Policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time. When we do, we will update the
+        "Last updated" date above. Continued use of the App after changes means the updated
+        policy applies.
+      </p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Developer: AI Tutor / flashcardApp</p>
+      <p>
+        For privacy questions, data access, or deletion requests, please contact us through
+        the support email listed in the App Store or Google Play listing for AI Tutor.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
+""".strip()
 
 TUTOR_SYSTEM_PROMPT = """
 You are a helpful tutor for learning French vocabulary, phrases, and sentences.
@@ -359,6 +544,21 @@ User-selected AI Decide settings:
 
 
 # ---------- Routes ----------
+
+@app.get("/", include_in_schema=False)
+def root():
+    return {
+        "name": "AI Tutor API",
+        "status": "ok",
+        "docs": "/docs",
+        "privacy_policy": "/privacy",
+    }
+
+
+@app.get("/privacy", response_class=HTMLResponse, include_in_schema=False)
+def privacy_policy():
+    return PRIVACY_POLICY_HTML
+
 
 @app.get("/health")
 def health():
